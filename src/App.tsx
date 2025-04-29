@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import ProtectedRoute from './components/ProtectedRoute';
+import { useGoogleAnalytics } from './hooks/useGoogleAnalytics';
 
 // Lazy-loaded pages
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -16,6 +17,8 @@ const PostPage = lazy(() => import('./pages/PostPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
+  useGoogleAnalytics();
+
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><LoadingSpinner size="large" /></div>}>
       <Routes>
