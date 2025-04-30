@@ -44,7 +44,7 @@ const HomePage = () => {
               Tell Your Story to the World
             </h1>
             <p className="text-xl md:text-2xl text-primary-100 mb-10">
-              Create, share, and grow with a blogging platform built for the modern creator.
+              Create, share, and grow with your persolnal blogging platform built for young creator.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
