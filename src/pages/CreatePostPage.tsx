@@ -6,7 +6,6 @@ import { supabase } from '../lib/supabase';
 import { showToast } from '../components/ui/Toaster';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import ImageUpload from '../components/ImageUpload';
-import { sendPublishNotification, processImage } from '../lib/api';
 
 type PostFormData = {
   title: string;
@@ -41,19 +40,13 @@ const CreatePostPage = () => {
 
     setSaving(true);
     try {
-      // Process cover image if exists
-      let coverImage = data.cover_image;
-      if (coverImage) {
-        coverImage = await processImage(coverImage);
-      }
-
       const slug = generateSlug(data.title);
 
       const { error, data: post } = await supabase.from('posts').insert({
         title: data.title,
         content: data.content,
         excerpt: data.excerpt,
-        cover_image: coverImage,
+        cover_image: data.cover_image,
         user_id: user.id,
         slug,
         published: data.published,
@@ -69,11 +62,6 @@ const CreatePostPage = () => {
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       });
-
-      // Send notification if post is published
-      if (data.published) {
-        await sendPublishNotification(post.id, user.id);
-      }
 
       showToast({
         type: 'success',
