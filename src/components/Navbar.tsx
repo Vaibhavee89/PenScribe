@@ -78,48 +78,53 @@ const Navbar = () => {
                 </Link>
               </>
             ) : (
-              <div className="relative">
-                <button
-                  onClick={toggleDropdown}
-                  className={`flex items-center gap-1 ${linkClass}`}
-                >
-                  Account <ChevronDown size={16} />
-                </button>
-                {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-10 animate-fade-in">
-                    <Link
-                      to="/dashboard"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Dashboard
-                    </Link>
-                    <Link
-                      to="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Profile
-                    </Link>
-                    <Link
-                      to="/create-post"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Create Post
-                    </Link>
-                    <button
-                      onClick={() => {
-                        setIsDropdownOpen(false);
-                        handleSignOut();
-                      }}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
-                )}
-              </div>
+              <>
+                <span className={`${linkClass} cursor-default`}>
+                  {user.email}
+                </span>
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdown}
+                    className={`flex items-center gap-1 ${linkClass}`}
+                  >
+                    Account <ChevronDown size={16} />
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-10 animate-fade-in">
+                      <Link
+                        to="/dashboard"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Dashboard
+                      </Link>
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      <Link
+                        to="/create-post"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Create Post
+                      </Link>
+                      <button
+                        onClick={() => {
+                          setIsDropdownOpen(false);
+                          handleSignOut();
+                        }}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </div>
 
@@ -161,6 +166,9 @@ const Navbar = () => {
               </>
             ) : (
               <>
+                <div className="py-2 text-gray-800 font-medium">
+                  {user.email}
+                </div>
                 <Link
                   to="/dashboard"
                   className="block py-2 text-gray-800 font-medium"
