@@ -37,13 +37,13 @@ const Navbar = () => {
   const isHomePage = location.pathname === '/';
   const navbarClass = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     isScrolled || !isHomePage
-      ? 'dark:bg-dark-800 dark:border-dark-700 bg-white shadow-md py-3'
+      ? 'bg-white shadow-md py-3'
       : 'bg-transparent py-5'
   }`;
 
   const linkClass = `font-medium transition-colors ${
     isScrolled || !isHomePage
-      ? 'dark:text-gray-300 dark:hover:text-white text-gray-800 hover:text-primary-600'
+      ? 'text-gray-800 hover:text-primary-600'
       : 'text-white hover:text-primary-100'
   }`;
 
