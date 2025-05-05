@@ -5,7 +5,7 @@ import { Toaster } from './ui/Toaster';
 
 const Layout = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors">
       <Navbar />
       <main className="flex-grow">
         <Outlet />
