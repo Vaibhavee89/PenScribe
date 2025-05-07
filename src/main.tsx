@@ -5,6 +5,10 @@ import App from './App';
 import { AuthProvider } from './contexts/AuthContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import './index.css';
+import Amplify from 'aws-amplify';
+import awsConfig from './aws-exports';
+
+Amplify.configure(awsConfig);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
